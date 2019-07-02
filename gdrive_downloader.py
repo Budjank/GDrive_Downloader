@@ -1,5 +1,5 @@
 #!/usr/bin/python2.7
-import requests, argparse
+import requests, argparse, os
 
 parser = argparse.ArgumentParser(description="GDrive Downloader")
 parser.add_argument("-v", help="Version", action="version", version="%(prog)s 1 0")
@@ -43,18 +43,21 @@ if __name__ == "__main__":
     name = args.name
     destination = str(name)
     puky(file_id, destination)
+    size = os.path.getsize(name)
     try:
         gblk = "Successfully"
     except:
         gblk = "Failed Gan!!"
-    yy = "{: <38}".format(gdid)
     yx = "{: <38}".format(name)
+    yy = "{: <38}".format(gdid)
+    yz = "{: <38}".format(size)
     print """
     +---------------------------------------------------+
     |                 GDrive Downloader                 |
     +---------------------------------------------------+
     | FileId   : """+yy+""" |
     | Filename : """+yx+""" |
+    | FileSize : """+yz+""" |
     +---------------------------------------------------+
     |                    """+gblk+"""                   |
     +---------------------------------------------------+
